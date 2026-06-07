@@ -1,0 +1,110 @@
+### 1. Registrar trabajador
+POST http://localhost:3000/trabajador/registrarTrabajador
+Content-Type: application/json
+
+{
+    "nombre":"Ana González",
+    "correo":"ana2@taller2.cl",
+    "contrasenia":"pass123",
+    "bono":0,
+    "rut":"12345678-0",
+    "sueldo":500000
+}
+
+### 2. Iniciar sesion
+POST http://localhost:3000/trabajador/iniciarSesion
+Content-Type: application/json
+
+{
+    "correo":"ana2@taller2.cl",
+    "contrasenia":"pass123"
+}
+
+### 1. Registrar libro
+POST http://localhost:3000/libro/registrarLibro
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiY29ycmVvIjoiYW5hMkB0YWxsZXIyLmNsIiwianRpIjoiMmY1M2UxZTMtNjVkZC00ZTAzLTkzMWEtNjE2OWNlMzIxNTlmIiwiaWF0IjoxNzgwODU1MjI5LCJleHAiOjE3ODA4NTg4Mjl9.xWB4MjV6aFkP0FjgYfNgy9YFe1jc2kKwJgh1LSeE8xU
+
+{
+    "Nombre": "Harry Potter",
+    "Genero": 1,
+    "Autor": "J.K. Rowling",
+    "fecha_recepcion": "2026-06-07",
+    "cantidad_copias": 3,
+    "edad_sugerida": 10,
+    "editorial": "Salamandra",
+    "precio": 12990,
+    "estado": 1
+}
+
+### 2. Registrar usuario
+POST http://localhost:3000/usuario/registrarUsuario
+Content-Type: application/json
+
+{
+    "nombre": "Luis Martínez",
+    "rut": "44444444-4",
+    "direccion": "Av. Principal 123"
+}
+
+### 3. Deshabilitar copia
+PUT http://localhost:3000/libro/deshabilitarCopia/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiY29ycmVvIjoiYW5hMkB0YWxsZXIyLmNsIiwianRpIjoiMmY1M2UxZTMtNjVkZC00ZTAzLTkzMWEtNjE2OWNlMzIxNTlmIiwiaWF0IjoxNzgwODU1MjI5LCJleHAiOjE3ODA4NTg4Mjl9.xWB4MjV6aFkP0FjgYfNgy9YFe1jc2kKwJgh1LSeE8xU
+
+### 4. Actualizar precio
+PUT http://localhost:3000/libro/actualizarPrecio/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiY29ycmVvIjoiYW5hMkB0YWxsZXIyLmNsIiwianRpIjoiMmY1M2UxZTMtNjVkZC00ZTAzLTkzMWEtNjE2OWNlMzIxNTlmIiwiaWF0IjoxNzgwODU1MjI5LCJleHAiOjE3ODA4NTg4Mjl9.xWB4MjV6aFkP0FjgYfNgy9YFe1jc2kKwJgh1LSeE8xU
+
+{
+    "precio": 35000
+}
+
+### 5. Desactivar usuario
+PUT http://localhost:3000/usuario/desactivarUsuario/1
+Content-Type: application/json
+
+### 6. Registrar transaccion
+POST http://localhost:3000/transaccion/registrarTransaccion
+Content-Type: application/json
+Authorization: Bearer TOKEN_AQUI
+
+{
+    "TrabajadorId": 3,
+    "UsuarioId": 2,
+    "Fecha": "2026-06-07",
+    "Copia_libroid": 3,
+    "es_venta": 1,
+    "es_prestamo": 0
+}
+
+### 7. Consultar detalle
+GET http://localhost:3000/transaccion/consultarDetalle/2/2026-06-07
+Content-Type: application/json
+Authorization: Bearer TOKEN_AQUI
+
+### 8. Listar usuarios y bibliotecarias
+GET http://localhost:3000/usuario/listarUsuariosYBibliotecarias
+
+### 9. Listar usuarios con transaccion
+GET http://localhost:3000/usuario/listarUsuariosConTransaccion
+
+### 10. Listar clientes
+GET http://localhost:3000/usuario/listarClientes
+
+### 11. Listar libros disponibles
+GET http://localhost:3000/libro/listarLibrosDisponibles
+
+### 12. Listar libros semana actual
+GET http://localhost:3000/libro/listarLibrosSemanaActual
+
+### 13. Incrementar stock
+POST http://localhost:3000/libro/incrementarStock/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiY29ycmVvIjoiYW5hMkB0YWxsZXIyLmNsIiwianRpIjoiMmY1M2UxZTMtNjVkZC00ZTAzLTkzMWEtNjE2OWNlMzIxNTlmIiwiaWF0IjoxNzgwODU1MjI5LCJleHAiOjE3ODA4NTg4Mjl9.xWB4MjV6aFkP0FjgYfNgy9YFe1jc2kKwJgh1LSeE8xU
+
+### 14. Cantidad libros vendidos
+GET http://localhost:3000/libro/cantidadLibrosVendidos
+
+### 15. Top 10 libros ficcion
+GET http://localhost:3000/libro/topLibrosFiccion
