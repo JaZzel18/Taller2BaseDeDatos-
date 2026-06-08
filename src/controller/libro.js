@@ -78,4 +78,13 @@ export class LibroController {
             res.status(500).json({ "status": "500", "message": "Error " + error.message, "data": null });
         }
     }
+
+    static async MenosPrestadosComedia(req, res) {
+        try{
+            const respuesta = await Libro.MenosPrestadosComedia();
+            res.status(parseInt(respuesta.status)).json(respuesta);
+        } catch (error) {
+            res.status(500).json({"status": 500, "message": "Error " + error.message, "data": null })
+        }
+    }
 }

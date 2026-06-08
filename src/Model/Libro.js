@@ -211,4 +211,33 @@ export class Libro {
             }
         }
     }
+
+    static async MenosPrestadosComedia() {
+        try{
+            const [libros] = await connection.query(`
+                SELECT l.Nombre, l.Autor, COUNT(t.id) as total_prestamos
+                FROM Libro l
+                LEFT JOIN Copia_libro cl ON l.id = cl.Libroid
+                LEFT JOIN Transaccion t ON cl.id = t.Copia_libroid
+                AND t.es_prestamo = 1
+                AND t.semestre = 2
+                AND YEAR(t.Fecha) = 2025
+                WHERE l.Genero = 2
+                GROUP BY l.id
+                ORDER BY total_prestamos ASC
+                LIMIT 10
+                `);
+                return {
+                    "status": 200,
+                    "message": "Los 10 libros menos prestados de comedia (2do semestre 2025)",
+                    "data": libros
+                };
+        } catch (error) {
+            return {
+                "status": 500,
+                "message": "Error al obtener los libros menos prestados: " + error.message,
+                "data": null
+            }
+        }
+    }
 }

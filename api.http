@@ -108,3 +108,6 @@ GET http://localhost:3000/libro/cantidadLibrosVendidos
 
 ### 15. Top 10 libros ficcion
 GET http://localhost:3000/libro/topLibrosFiccion
+
+### 16. Los 10 libros menos prestado de comedia (2do semestre 2025)
+GET http://localhost:3000/libro/menosPrestadosComedia

@@ -12,5 +12,6 @@ libro.get('/listarLibrosSemanaActual', LibroController.ListarLibrosSemanaActual)
 libro.post('/incrementarStock/:id', verificarToken, LibroController.IncrementarStock);
 libro.get('/cantidadLibrosVendidos', LibroController.CantidadLibrosVendidosAnio);
 libro.get('/topLibrosFiccion', LibroController.TopLibrosFiccion);
+libro.get('/menosPrestadosComedia', LibroController.MenosPrestadosComedia);
 
 export default libro;
